@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # シェル変数(Shell Variables)
 
 # HOME
