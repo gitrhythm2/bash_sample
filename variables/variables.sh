@@ -91,15 +91,3 @@ echo "unset--->"
 unset user[id]
 echo ${user[@]}         #=> hosokawa hiroyuki
 
-
-
-
-
-
-
-
-
-
-
-
-
