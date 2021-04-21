@@ -110,4 +110,3 @@ echo ${uri/#ftp:/https:}  # https://home/user/home
 uri=https://home/user/hoge.txt
 # パターンに%を付けると(/%)、文字列の末尾にマッチした時だけ置換する
 echo ${uri/%.txt/.html}    # https://home/user/hoge.html
-

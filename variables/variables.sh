@@ -90,4 +90,3 @@ echo "[${user[hoge]}]"  #=> 未定義のものを指定すると空文字(エラ
 echo "unset--->"
 unset user[id]
 echo ${user[@]}         #=> hosokawa hiroyuki
-
