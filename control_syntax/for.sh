@@ -58,3 +58,21 @@ basic
 parameter hoge fuga chome
 break_continue
 
+# コマンド出力の結果を1行ずつ処理するパターン
+# while_until.shと同様、duの出力結果を1行ずつ処理するパターンを
+# forループでやってみる。
+# こちらはパイプを使ったwhileループとは異なり、サブシェルは起動しない模様
+# 従って、forループの外で側定義したtotalをループ内ぶでアクセスできている
+#
+# また、duの出力結果はタブ区切りで表示されているが、IFSに沿ってデータを分割
+# するので、タブで１レコードが分割されて2行で表示されてしまう
+# IFSに改行のみセットすれば、duの1行を1行として扱える
+
+total=0
+# IFS="\n"    # こちらのやり方はダメ！(単に文字としての\nがIFSにセットされる)
+IFS=$'\n'
+for line in $(du ~/.config); do
+  [[ "$line" =~ ^([0-9]+).* ]]  # 行頭の数字をキャプチャー
+  ((total += BASH_REMATCH[1]))  # キャプチャーした値はBASH_REMATCHに格納される([0]は1行全て)
+done
+printf "total: [%'d]\n" "$total"
